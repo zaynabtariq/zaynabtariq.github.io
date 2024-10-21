@@ -1,0 +1,144 @@
+#experience {
+    padding: 100px 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 32px;
+    color: var(--lightest-slate);
+    margin-bottom: 20px;
+}
+
+#experience h1 {
+    font-size: 80px;
+    margin-bottom: 50px;
+    color: var(--lightest-slate);
+}
+
+.experience-container {
+    display: flex;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.experience-tabs {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    border-left: 2px solid var(--lightest-navy);
+}
+
+.tab-button {
+    background: transparent;
+    border: none;
+    color: var(--slate);
+    padding: 15px 20px;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    position: relative;
+}
+
+.tab-button:hover {
+    color: var(--green);
+    background-color: var(--light-navy);
+}
+
+.tab-button.active {
+    color: var(--green);
+}
+
+.tab-button.active::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--green);
+}
+
+.experience-content {
+    flex-grow: 1;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    font-size: 22px;
+    color: var(--lightest-slate);
+    margin-bottom: 5px;
+}
+
+.company {
+    color: var(--green);
+}
+
+.duration {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--slate);
+    margin-bottom: 25px;
+}
+
+.experience-list {
+    list-style: none;
+    padding: 0;
+}
+
+.experience-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    color: var(--slate);
+}
+
+.experience-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .experience-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .experience-tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        border-left: none;
+        border-bottom: 2px solid var(--lightest-navy);
+    }
+
+    .tab-button.active::before {
+        left: 0;
+        bottom: -2px;
+        top: auto;
+        height: 2px;
+        width: 100%;
+    }
+}
