@@ -2,64 +2,205 @@
     padding: 100px 0;
     max-width: 800px;
     margin: 0 auto;
-}
-
-.section-title {
-    font-size: 32px;
-    color: var(--lightest-slate);
-    margin-bottom: 20px;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #contact h1 {
     font-size: 80px;
-    margin-bottom: 20px;
     color: var(--lightest-slate);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
 }
 
-#contact p {
+.contact-content {
+    color: var(--slate);
     max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s forwards;
+}
+
+.contact-content p {
+    font-size: 18px;
+    line-height: 1.6;
     margin-bottom: 50px;
 }
 
 #contact-form {
+    width: 100%;
     max-width: 600px;
+    margin: 40px auto 0;
+    padding: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s forwards;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    position: relative;
+    margin-bottom: 35px;
 }
 
-label {
+.form-group label {
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    margin-bottom: 10px;
     display: block;
-    margin-bottom: 5px;
-    color: var(--lightest-slate);
 }
 
-input, textarea {
+.form-group input,
+.form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid var(--lightest-navy);
-    background-color: var(--light-navy);
+    padding: 15px;
+    border: 1px solid var(--green);
+    background-color: var(--navy);
     color: var(--lightest-slate);
     border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: var(--font-mono);
 }
 
-textarea {
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 1px var(--green);
+}
+
+.form-group textarea {
     height: 150px;
     resize: vertical;
+    min-height: 150px;
+    max-height: 300px;
+}
+
+/* Fix for autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--lightest-slate);
+    -webkit-box-shadow: 0 0 0px 1000px var(--navy) inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .submit-button {
     background-color: transparent;
     color: var(--green);
     border: 1px solid var(--green);
-    padding: 10px 20px;
+    border-radius: 4px;
+    padding: 15px 50px;
     font-size: 14px;
     font-family: var(--font-mono);
     cursor: pointer;
     transition: all 0.3s ease;
+    margin: 0 auto;
+    display: block;
 }
 
 .submit-button:hover {
     background-color: var(--green-tint);
+    transform: translateY(-2px);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.form-status {
+    text-align: center;
+    margin-top: 20px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    height: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.form-status.success {
+    color: var(--green);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-status.error {
+    color: #ff6b6b;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.shake {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translateX(-1px);
+    }
+    20%, 80% {
+        transform: translateX(2px);
+    }
+    30%, 50%, 70% {
+        transform: translateX(-4px);
+    }
+    40%, 60% {
+        transform: translateX(4px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #contact {
+        padding: 80px 20px;
+    }
+
+    #contact h1 {
+        font-size: 60px;
+    }
+
+    .contact-content p {
+        font-size: 16px;
+    }
+    
+    #contact-form {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #contact h1 {
+        font-size: 50px;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 15px 30px;
+    }
+    
+    #contact-form {
+        padding: 15px;
+    }
 }
