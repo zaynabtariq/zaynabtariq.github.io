@@ -8,6 +8,9 @@
     font-size: 80px;
     color: var(--lightest-slate);
     margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
 }
 
 .about-grid {
@@ -17,24 +20,30 @@
     align-items: start;
 }
 
+/* Content Section */
 .about-content {
     color: var(--slate);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s forwards;
 }
 
 .about-text {
     margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--slate);
 }
 
 .about-text p {
     margin-bottom: 15px;
-    font-size: 16px;
-    line-height: 1.6;
 }
 
+/* Skills List */
 .skills-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(140px, 200px));
-    gap: 0px 10px;
+    gap: 0 10px;
     padding: 0;
     margin: 20px 0 50px;
     overflow: hidden;
@@ -47,6 +56,8 @@
     padding-left: 20px;
     font-family: var(--font-mono);
     font-size: 13px;
+    opacity: 0;
+    transform: translateX(-10px);
 }
 
 .skills-list li::before {
@@ -58,18 +69,47 @@
     line-height: 12px;
 }
 
+/* Education Section */
 .education, .coursework {
     margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s forwards;
 }
 
 .education h3, .coursework h3 {
     color: var(--lightest-slate);
     font-size: 22px;
     margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.education h3::after, .coursework h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--green);
+    transition: width 0.3s ease;
+}
+
+.education h3:hover::after, .coursework h3:hover::after {
+    width: 100%;
 }
 
 .education-item {
     margin-bottom: 20px;
+    padding: 20px;
+    background-color: var(--light-navy);
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.education-item:hover {
+    transform: translateY(-5px);
 }
 
 .education-item h4 {
@@ -78,6 +118,7 @@
     margin-bottom: 5px;
 }
 
+/* Restored original font styling for education details */
 .degree {
     color: var(--slate);
     font-size: 16px;
@@ -91,6 +132,7 @@
     margin-bottom: 5px;
 }
 
+/* Coursework Section */
 .coursework-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -104,6 +146,8 @@
     padding-left: 20px;
     font-size: 14px;
     color: var(--slate);
+    opacity: 0;
+    transform: translateX(-10px);
 }
 
 .coursework-list li::before {
@@ -113,16 +157,20 @@
     color: var(--green);
 }
 
+/* Image Section */
 .about-image {
     position: relative;
     max-width: 300px;
+    margin-left: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.6s forwards;
 }
 
 .image-wrapper {
     position: relative;
-    border-radius: 4px;
-    background-color: transparent; /* Changed from var(--green) to transparent */
-    transition: all 0.1s cubic-bezier(0.645,0.045,0.355,1);
+    background-color: transparent;
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .image-wrapper::after {
@@ -136,26 +184,37 @@
     top: 20px;
     left: 20px;
     z-index: -1;
-    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.image-wrapper:hover {
+    transform: translate(-5px, -5px);
 }
 
 .image-wrapper:hover::after {
-    top: 15px;
-    left: 15px;
+    transform: translate(10px, 10px);
 }
 
 .image-wrapper img {
     position: relative;
     border-radius: 4px;
-    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    transition: all 0.3s ease;
     width: 100%;
     height: auto;
 }
 
-.image-wrapper:hover img {
-    filter: none;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .about-grid {
         grid-template-columns: 1fr;
@@ -174,10 +233,18 @@
     .coursework-list {
         grid-template-columns: 1fr;
     }
+
+    .section-title {
+        font-size: 60px;
+    }
 }
 
 @media (max-width: 480px) {
     .skills-list {
         grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 50px;
     }
 }
