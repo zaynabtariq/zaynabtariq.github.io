@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zaynab Tariq - Software Engineer</title>
+    <script type="module">
+        import { Application } from 'https://unpkg.com/@splinetool/runtime@0.9.493/build/runtime.js';
+        window.Application = Application;
+    </script>
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
@@ -24,11 +28,16 @@
 
     <main>
         <section id="hero">
-            <p class="intro-text">Hi, my name is</p>
-            <h1>Zaynab Tariq.</h1>
-            <h2>I am <span id="typing-animation"></span></h2>
-            <p class="description">I'm a Computer Science and Economics student at Colby College, concentrating in AI and Financial Markets. I'm passionate about developing innovative solutions and conducting cutting-edge research in artificial intelligence and software engineering.</p>
-            <a href="contact.html" class="cta-button">Get In Touch</a>
+            <div class="hero-content">
+                <p class="intro-text">Hi, my name is</p>
+                <h1>Zaynab Tariq.</h1>
+                <h2>I am <span id="typing-animation"></span></h2>
+                <p class="description">I'm a Computer Science and Economics student at Colby College, concentrating in AI and Financial Markets. I'm passionate about developing innovative solutions and conducting cutting-edge research in artificial intelligence and software engineering.</p>
+                <a href="contact.html" class="cta-button">Get In Touch</a>
+            </div>
+            <div class="spline-container">
+                <canvas id="canvas3d"></canvas>
+            </div>
         </section>
     </main>
 

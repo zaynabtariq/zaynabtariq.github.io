@@ -60,3 +60,16 @@ window.addEventListener('scroll', () => {
         header.style.backdropFilter = 'none';
     }
 });
+
+document.addEventListener('DOMContentLoaded', async function() {
+    try {
+        const canvas = document.getElementById('canvas3d');
+        if (canvas) {
+            const app = new window.Application(canvas);
+            await app.load('https://prod.spline.design/vbR8w6UPXfXblAPv/scene.splinecode');
+            console.log('Spline scene loaded successfully');
+        }
+    } catch (error) {
+        console.error('Error loading Spline scene:', error);
+    }
+});

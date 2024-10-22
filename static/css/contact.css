@@ -145,6 +145,11 @@ textarea:-webkit-autofill:focus {
     animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
+.background-particle-network {
+    background: var(--navy);
+    will-change: transform;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
